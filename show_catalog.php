@@ -44,7 +44,7 @@ foreach ($files as $file) {
         } else {
             echo "<tr>";
             echo "<td style='padding: 15px'>" . "</td>";
-            echo "<td style='padding: 15px'> <a href='index4.php'>" . $file . "</a></td>";
+            echo "<td style='padding: 15px'> <a href='index4.php'>" . '<i class="glyphicon glyphicon-level-up fa-6x"></i>' . "</a></td>";
             echo "<td style='padding: 15px'>" . "</td>";
             echo "</tr>";
         }
