@@ -45,8 +45,6 @@ if ($rekord) {
 echo "Dodaj nowy katalog ";
 echo '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-folder-close fa-6x"></i> </a><br>';
 
-
-
 echo "<table border='1'>
 <tr>
 <th style='padding: 15px'>Podgląd</th>
@@ -61,7 +59,7 @@ foreach ($files as $file) {
         echo "<td style='padding: 15px'>" . "</td>";
         if (!strpos($file, '.')) {
             echo "<td style='padding: 15px'> <a href='show_catalog.php?catalog=$file'>" . $file . "</a></td>";
-            echo "<td style='padding: 15px'>" . '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-trash fa-6x"></i> </a><br>' . "</td>";
+            echo "<td style='padding: 15px'> <a href='remove_catalog.php?catalog=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
         } else {
             echo "<td style='padding: 15px'>" . $file . "</td>";
             echo "<td style='padding: 15px'> <a href='remove_file.php?file=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
