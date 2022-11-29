@@ -43,7 +43,9 @@ if ($rekord) {
 <br>
 <?php
 echo "Dodaj nowy katalog ";
-echo '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-folder-close fa-6x"></i> </a><br>';
+echo '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-folder-close fa-6x"></i> </a><br><br>';
+echo "Wyślij plik ";
+echo '<a href="upload_file.php"><i class="glyphicon glyphicon-cloud-upload fa-6x"></i> </a><br><br>';
 
 echo "<table border='1'>
 <tr>

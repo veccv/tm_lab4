@@ -25,6 +25,9 @@ $catalog = $_GET['catalog'];
 <br>
 <br>
 <?php
+echo "Wyślij plik ";
+echo '<a href="upload_file.php?catalog=' . $catalog . '"><i class="glyphicon glyphicon-cloud-upload fa-6x"></i> </a><br><br>';
+
 echo "<table border='1'>
 <tr>
 <th style='padding: 15px'>Podgląd</th>
