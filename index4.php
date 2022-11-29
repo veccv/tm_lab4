@@ -8,8 +8,15 @@ if (!isset($_SESSION['loggedin']))
 }
 
 $user = $_SESSION['user'];
-$link = mysqli_connect( "" , "", "", "");
-if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); }
+
+
+$auth_file = file_get_contents('auth.txt');
+$lines = explode("\n", $auth_file);
+$host = substr($lines[0], 5, -1);
+$username = substr($lines[1], 9, -1);
+$password = substr($lines[2], 9, -1);
+$database = substr($lines[3], 7);
+$link = mysqli_connect($host, $username, $password, $database);if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); }
 mysqli_query($link, "SET NAMES 'utf8'");
 $result = mysqli_query($link, "SELECT * FROM break_ins WHERE login='$user' ORDER BY datetime DESC LIMIT 1");
 $rekord = mysqli_fetch_array($result);

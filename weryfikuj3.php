@@ -7,7 +7,13 @@
 $user = htmlentities ($_POST['user'], ENT_QUOTES, "UTF-8");
 $pass = htmlentities ($_POST['pass'], ENT_QUOTES, "UTF-8");
 $ipaddress = $_SERVER["REMOTE_ADDR"];
-$link = mysqli_connect( "" , "", "", "");
+$auth_file = file_get_contents('auth.txt');
+$lines = explode("\n", $auth_file);
+$host = substr($lines[0], 5, -1);
+$username = substr($lines[1], 9, -1);
+$password = substr($lines[2], 9, -1);
+$database = substr($lines[3], 7);
+$link = mysqli_connect($host, $username, $password, $database);
 if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); }
 mysqli_query($link, "SET NAMES 'utf8'");
 $result = mysqli_query($link, "SELECT * FROM users WHERE username='$user'");
