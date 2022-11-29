@@ -26,6 +26,7 @@ if(!$rekord) //Jeśli brak, to nie ma użytkownika o podanym loginie
         mysqli_query($link, "INSERT INTO users (username, password) VALUES ('$user', '$pass')");
         mysqli_close($link);
         echo "Zarejestrowano użytkownika $user z hasłem $pass";
+        mkdir($user);
 
     } else {
         echo "Podane hasła nie są takie same";
