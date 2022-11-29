@@ -58,12 +58,26 @@ $files = scandir($user);
 foreach ($files as $file) {
     if ($file != '.' && $file != '..') {
         echo "<tr>";
-        echo "<td style='padding: 15px'>" . "</td>";
         if (!strpos($file, '.')) {
+            echo "<td style='padding: 15px'>" . "</td>";
             echo "<td style='padding: 15px'> <a href='show_catalog.php?catalog=$file'>" . $file . "</a></td>";
             echo "<td style='padding: 15px'> <a href='remove_catalog.php?catalog=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
         } else {
-            echo "<td style='padding: 15px'>" . $file . "</td>";
+            if (strpos($file, ".jpg") || strpos($file, ".png") || strpos($file, ".gif")) {
+                echo "<td style='padding: 15px'>" . "<a href='$user/$file'><img src='$user/$file' width='200px' height='150px'> </a>" . "</td>";
+                echo "<td style='padding: 15px'>" . "<a download='$file' href='$user/$file'>$file</a>" . "</td>";
+
+            } else if (strpos($file, ".mp3")) {
+                echo "<td style='padding: 15px'>" . "<audio controls src='$user/$file'> </audio>" . "</td>";
+                echo "<td style='padding: 15px'>" . "<a download='$file' href='$user/$file'>$file</a>" . "</td>";
+
+            } else if (strpos($file, ".mp4")) {
+                echo "<td style='padding: 15px'>" . "<video controls width='200px' height='150px' muted='true'><source src='$user/$file' type='video/mp4'></video>" . "</td>";
+                echo "<td style='padding: 15px'>" . "<a download='$file' href='$user/$file'>$file</a>" . "</td>";
+            } else {
+                echo "<td style='padding: 15px'>" . "</td>";
+                echo "<td style='padding: 15px'>" . "<a download='$file' href='$user/$file'>$file</a>" . "</td>";
+            }
             echo "<td style='padding: 15px'> <a href='remove_file.php?file=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
         }
         echo "</tr>";
