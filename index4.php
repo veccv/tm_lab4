@@ -64,16 +64,13 @@ foreach ($files as $file) {
             echo "<td style='padding: 15px'>" . '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-trash fa-6x"></i> </a><br>' . "</td>";
         } else {
             echo "<td style='padding: 15px'>" . $file . "</td>";
-            echo "<td style='padding: 15px'>" . '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-trash fa-6x"></i> </a><br>' . "</td>";
+            echo "<td style='padding: 15px'> <a href='remove_file.php?file=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
         }
         echo "</tr>";
     }
 }
 echo "</table>";
 echo "<br>";
-
-
-
 ?>
 </BODY>
 </HTML>
