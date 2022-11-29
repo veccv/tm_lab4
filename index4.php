@@ -28,9 +28,12 @@ if ($rekord) {
     echo "<br>";
 }
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>
-<BODY>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<BODY style="padding: 15px">
 <a href="logout.php">Wyloguj się</a>
 <br>
 <a href="index.php">Powrót do menu głównego</a>
@@ -39,6 +42,11 @@ if ($rekord) {
 <br>
 <br>
 <?php
+echo "Dodaj nowy katalog ";
+echo '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-folder-close fa-6x"></i> </a><br>';
+
+
+
 echo "<table border='1'>
 <tr>
 <th style='padding: 15px'>Podgląd</th>
@@ -48,20 +56,17 @@ echo "<table border='1'>
 
 $files = scandir($user);
 foreach ($files as $file) {
-if (strlen($file) > 1) {
+    if ($file != '.' && $file != '..') {
+        echo "<tr>";
+        echo "<td style='padding: 15px'>" . "</td>";
         if (!strpos($file, '.')) {
-            echo "<tr>";
-            echo "<td style='padding: 15px'>" . "</td>";
             echo "<td style='padding: 15px'> <a href='show_catalog.php?catalog=$file'>" . $file . "</a></td>";
-            echo "<td style='padding: 15px'>" . "</td>";
-            echo "</tr>";
+            echo "<td style='padding: 15px'>" . '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-trash fa-6x"></i> </a><br>' . "</td>";
         } else {
-            echo "<tr>";
-            echo "<td style='padding: 15px'>" . "</td>";
             echo "<td style='padding: 15px'>" . $file . "</td>";
-            echo "<td style='padding: 15px'>" . "</td>";
-            echo "</tr>";
+            echo "<td style='padding: 15px'>" . '<a href="add_catalog_form.php"><i class="glyphicon glyphicon-trash fa-6x"></i> </a><br>' . "</td>";
         }
+        echo "</tr>";
     }
 }
 echo "</table>";
