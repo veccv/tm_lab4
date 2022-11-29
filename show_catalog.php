@@ -11,9 +11,12 @@ $user = $_SESSION['user'];
 $catalog = $_GET['catalog'];
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl"> <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>
-<BODY>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<BODY style="padding: 15px">
 <a href="logout.php">Wyloguj się</a>
 <br>
 <a href="index.php">Powrót do menu głównego</a>
@@ -36,7 +39,7 @@ foreach ($files as $file) {
             echo "<tr>";
             echo "<td style='padding: 15px'>" . "</td>";
             echo "<td style='padding: 15px'>" . $file . "</td>";
-            echo "<td style='padding: 15px'>" . "</td>";
+            echo "<td style='padding: 15px'> <a href='remove_file_from_catalog.php?catalog=$catalog&file=$file'>" . '<i class="glyphicon glyphicon-trash fa-6x"></i>' . "</a></td>";
             echo "</tr>";
         } else {
             echo "<tr>";
